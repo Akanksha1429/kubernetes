@@ -1,0 +1,50 @@
+checks > security scan > aggregate coverage> 
+subpipelines > env built > unit test cases > image building > 
+registring workflow > regression test for the workflows 
+
+
+default:
+  tags: ['dss-dev-eus-win']
+
+variables:
+  BAMSUserName: "$bamsUserName"
+  BAMSPassword: "$bamsPassword"
+  BAMSDssUserName: "$bamsDssUserName"
+  BAMSDssPassword: "$bamsDssPassword"
+  GIT_STRATEGY: fetch
+
+
+stages:
+# vault stages
+  - vault
+
+# dev stages
+  - re-baking-base-dev
+
+# tst stages
+  - re-baking-base-tst 
+
+# ppr stages
+  - re-baking-base-ppr
+  - re-baking-base-sdr 
+
+# prd stages
+  - re-baking-base-prd
+  - re-baking-base-dr
+
+include:
+  - project: ci/stable/security/vault-service
+    ref: 3.1.8  # Use latest tag version
+    file:
+      - templates/vault-service-artifacts.yml
+
+# Dev Subscription 
+0-vault-azure-auth-dev:
+  stage: vault
+  variables:
+    LSEG_PPE_VAULT: "true"
+    AZURE_ACCOUNT: "a1a-51509-dev-test-sub-dss-01" 
+  extends: .vault-azure-auth
+  when: manual
+  tags:
+    - LSEG 
