@@ -26,12 +26,7 @@
   - purpose:
     - List the nodes present in the cluster.(request -> api-server -> validation and authentication -> fetching data from **ETCD** -> reply with the nodes that are running.)
 
-- **cmd3: kubectl config get-context** 
-  - o/p: 
-    - CURRENT   NAME                                                        CLUSTER                                                     AUTHINFO                                                    NAMESPACE
-          gke_steam-canto-468607-f9_us-central1_autopilot-cluster-1   gke_steam-canto-468607-f9_us-central1_autopilot-cluster-1   gke_steam-canto-468607-f9_us-central1_autopilot-cluster-1   
-          kind-dora-cluster                                           kind-dora-cluster                                           kind-dora-cluster                                           
-          kind-kind                                                   kind-kind                                                    kind-kind                                                   
+- **cmd3: kubectl config get-context**                                                   
   - purpose:
     - list all the clusters available.
 
