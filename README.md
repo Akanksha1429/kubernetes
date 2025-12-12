@@ -9,7 +9,7 @@
   5. Enterprise Support
 
 ### Architecture:
-![alt text](<../architecture.png>)
+![K8s architecture](</images/architecture.png>)
 
 ### Commands:
 - cmd1: kubectl cluster-info --context name_of_the_cluster 
