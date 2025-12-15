@@ -10,10 +10,13 @@
 
 ### Architecture:
 ![K8s architecture](</images/architecture.png>)
+Fig : K8s architecture 
 
 ![Pod creation](</images/pod.png>)
+Fig : Pod creation
 
 ![Pod lifecycle](</images/pod-lifecycle.png>)
+Fig : Pod lifecycle
 
 ## Note:
  > There are always multiple ways to perform a task.

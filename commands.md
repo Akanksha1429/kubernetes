@@ -1,43 +1,43 @@
 # Commands:
 
-- **cmd1: kubectl cluster-info --context name_of_the_cluster** 
-  - o/p: 
-    - Kubernetes control plane is running at https://127.0.0.1:51632
-    - CoreDNS is running at https://127.0.0.1:51632/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
-  - purpose:
-    - shows cluster endpoints (API server, DNS, other core services) for the given kubeconfig context.
+> - **cmd1: kubectl cluster-info --context name_of_the_cluster** 
+    - o/p: 
+      - Kubernetes control plane is running at https://127.0.0.1:51632
+      - CoreDNS is running at https://127.0.0.1:51632/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
+    - purpose:
+      - shows cluster endpoints (API server, DNS, other core services) for the given kubeconfig context.
 
-- **cmd2: kubectl get nodes** 
+> - **cmd2: kubectl get nodes** 
   - o/p: 
     - NAME                 STATUS   ROLES           AGE   VERSION
       kind-control-plane   Ready    control-plane   18m   v1.34.0
   - purpose:
     - List the nodes present in the cluster.(request -> api-server -> validation and authentication -> fetching data from **ETCD** -> reply with the nodes that are running.)
 
-- **cmd3: kubectl config get-context**                                                   
-  - purpose:
-    - list all the clusters available.
+> - **cmd3: kubectl config get-context**                                                   
+    - purpose:
+      - list all the clusters available.
 
-- **cmd3: kubectl config set-context kind-dora-cluster** 
-  - o/p: 
-    - Context "kind-dora-cluster" modified.
+> - **cmd3: kubectl config set-context kind-dora-cluster** 
+    - o/p: 
+      - Context "kind-dora-cluster" modified.
 
-- **cmd4: kubectl config use-context kind-dora-cluster** 
-  - o/p: 
-    - Switched to context "kind-dora-cluster".
+> - **cmd4: kubectl config use-context kind-dora-cluster** 
+    - o/p: 
+      - Switched to context "kind-dora-cluster".
 
-- **cmd5: kubectl run pod_name --image=nginx:latest** 
-  - o/p: 
-    - pod/nginx-pod created.
-  - purpose:
-    - To create pod in imperative way.
+> - **cmd5: kubectl run pod_name --image=nginx:latest** 
+    - o/p: 
+      - pod/nginx-pod created.
+    - purpose:
+      - To create pod in imperative way.
 
-- **cmd6: kubectl get pods** 
-  - o/p: 
-    - NAME        READY   STATUS    RESTARTS   AGE
-      nginx-pod   1/1     Running   0          59s
-  - purpose:
-    - List the pods.
+> - **cmd6: kubectl get pods** 
+    - o/p: 
+      - NAME        READY   STATUS    RESTARTS   AGE
+        nginx-pod   1/1     Running   0          59s
+    - purpose:
+      - List the pods.
 
 - **cmd7: kubectl explain pod** 
   - o/p: 
@@ -93,3 +93,22 @@
     - A new pod yaml file.
   - purpose:
     - A new pod yaml file that can be updated with required changes and then applied.
+
+- **cmd13: kubectl create deployment nginx --image=nginx --dry-run=client -o yaml > deploy.yaml** 
+- o/p: 
+    - A deployment yaml file.
+  - purpose:
+    - A new deployment yaml file that can be updated with required changes and then applied.
+
+- **cmd14: kubectl rollout history deployment/deployment.yaml** 
+- o/p: 
+    - REVISION CHANGE-CAUSE 
+          1       <none> 
+          2       <none>
+  - purpose:
+    - To check the updates.
+
+- **cmd15: kubectl rollout undo deployment/deployment.yaml** 
+- o/p: 
+  - purpose:
+    - To rollback the changes.
